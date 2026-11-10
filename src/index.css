@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root { color-scheme: light; }
+  body { background: linear-gradient(135deg, #f5f3ff 0%, #fdf4ff 45%, #fff7ed 100%); background-attachment: fixed; min-height: 100vh; }
+  *:focus-visible { outline: 2px solid theme('colors.brand.500'); outline-offset: 2px; }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+}
+
+@layer components {
+  .input {
+    @apply w-full rounded-xl border border-violet-200 bg-white px-3 py-2 text-sm text-slate-900 placeholder:text-slate-400 transition focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200 disabled:bg-violet-50 disabled:text-slate-500;
+  }
+  .input-error { @apply border-rose-400 focus:border-rose-500 focus:ring-rose-100; }
+  .card { @apply rounded-2xl border border-violet-100 bg-white shadow-card; }
+  .th { @apply px-4 py-3 text-left text-xs font-semibold text-brand-800; }
+  .td { @apply px-4 py-3 text-sm text-slate-700; }
+  .gradient-text { @apply bg-gradient-to-r from-brand-700 via-fuchsia-600 to-orange-500 bg-clip-text text-transparent; }
+}
+
+@keyframes pop { from { opacity: 0; transform: translateY(6px) scale(.98); } to { opacity: 1; transform: none; } }
+.animate-pop { animation: pop .18s ease-out; }
+@keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+.animate-float { animation: float 6s ease-in-out infinite; }
